@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse ;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 
 
 class ApiPostController extends AbstractController
@@ -37,13 +38,20 @@ class ApiPostController extends AbstractController
     {
         $jsonRecu = $request->getContent();
 
-        $post = $serializer->deserialize($jsonRecu, Post::class, 'json');
+        try {
+            $post = $serializer->deserialize($jsonRecu, Post::class, 'json');
         
-        $post->setCreatedAt(new \DateTime());
+            $post->setCreatedAt(new \DateTime());
 
-        $em->persist($post);
-        $em->flush();
+            $em->persist($post);
+            $em->flush();
 
-        dd($post);
+            return $this->json($post, 201, [], ['groups' => 'post:read']);
+        } catch(NotEncodableValueException $e) {
+            return $this->json([
+                'status' => 400,
+                'message' => $e->getMessage()
+            ], 400);
+        }
     }
 }
