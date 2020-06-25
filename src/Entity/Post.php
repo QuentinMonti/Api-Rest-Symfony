@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Contraints as Assert; 
+use Symfony\Component\Validator\Constraints as Assert; 
 
 
 /**
@@ -25,12 +25,16 @@ class Post
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("post:read")
+     * @Assert\NotBlank(message="Le titre est obligatoire")
+     * @Assert\Length(min=3)
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
      * @Groups("post:read") 
+     * @Assert\NotBlank
+     * @Assert\Length(min=3)
      */
     private $content;
 
