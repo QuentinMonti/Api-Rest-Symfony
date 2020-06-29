@@ -18,11 +18,18 @@ class Comment
      */
     private $id;
 
+     /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups("post:read") 
+     */
+    private $firstName;
+
+
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("post:read") 
      */
-    private $username;
+    private $lastName;
 
     /**
      * @ORM\Column(type="text")
@@ -40,17 +47,30 @@ class Comment
         return $this->id;
     }
 
-    public function getUsername(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->username;
+        return $this->firstName;
     }
 
-    public function setUsername(string $username): self
+    public function setFirstName(string $firstName): self
     {
-        $this->username = $username;
+        $this->firstName = $firstName;
 
         return $this;
     }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
 
     public function getContent(): ?string
     {

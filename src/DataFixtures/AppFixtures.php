@@ -16,8 +16,10 @@ class AppFixtures extends Fixture
 
         for ($p = 0; $p < 50; $p++) {
             $post = new Post;
-            $post->setTitle($faker->catchPhrase)
-                ->setContent($faker->paragraphs(5, true))
+            $post->setFirstName($faker->firstName)
+                ->setLastName($faker->lastName)
+                ->setJobTitle($faker->jobTitle)
+                ->setCity($faker->city)
                 ->setCreatedAt($faker->dateTimeBetween('-6 months'));
 
             $manager->persist($post);

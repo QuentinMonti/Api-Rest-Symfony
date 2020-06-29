@@ -25,18 +25,34 @@ class Post
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups("post:read")
-     * @Assert\NotBlank(message="Le titre est obligatoire")
+     * @Assert\NotBlank(message="Le nom est obligatoire")
      * @Assert\Length(min=3)
      */
-    private $title;
+    private $firstName;
+
+     /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
+     * @Assert\NotBlank(message="Le nom est obligatoire")
+     * @Assert\Length(min=3)
+     */
+    private $lastName;
 
     /**
      * @ORM\Column(type="text")
      * @Groups("post:read") 
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Le métier est obligatoire")
      * @Assert\Length(min=3)
      */
-    private $content;
+    private $jobTitle;
+
+    /**
+     * @ORM\Column(type="text")
+     * @Groups("post:read") 
+     * @Assert\NotBlank(message="La ville est obligatoire")
+     * @Assert\Length(min=3)
+     */
+    private $city;
 
     /**
      * @ORM\Column(type="datetime")
@@ -60,26 +76,50 @@ class Post
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->title;
+        return $this->firstName;
     }
 
-    public function setTitle(string $title): self
+    public function setFirstName(string $firstName): self
     {
-        $this->title = $title;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getLastName(): ?string
     {
-        return $this->content;
+        return $this->lastName;
     }
 
-    public function setContent(string $content): self
+    public function setLastName(string $lastName): self
     {
-        $this->content = $content;
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getJobTitle(): ?string
+    {
+        return $this->jobTitle;
+    }
+
+    public function setJobTitle(string $jobTitle): self
+    {
+        $this->jobTitle = $jobTitle;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }
