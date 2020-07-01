@@ -66,6 +66,12 @@ class Post
      */
     private $competences;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Groups("post:read")
+     */
+    private $course;
+
       /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups("post:read")
@@ -164,6 +170,18 @@ class Post
     public function setCompetences(string $competences): self
     {
         $this->competences = $competences;
+
+        return $this;
+    }
+
+    public function getCourse(): ?string
+    {
+        return $this->course;
+    }
+
+    public function setCourse(string $course): self
+    {
+        $this->course = $course;
 
         return $this;
     }

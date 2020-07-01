@@ -22,6 +22,7 @@ class AppFixtures extends Fixture
                 ->setJobTitle($faker->jobTitle)
                 ->setCity($faker->city)
                 ->setCompetences($faker->randomElement($array = array ('javascript','symfony','laravel')))
+                ->setCourse($faker->paragraphs(mt_rand(1, 3), true))
                 ->setEmail($faker->email)
                 ->setCreatedAt($faker->dateTimeBetween('-6 months'));
 
