@@ -60,6 +60,14 @@ class Post
      */
     private $city;
 
+      /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("post:read")
+     * @Assert\NotBlank(message="Le mail est obligatoire")
+     * @Assert\Length(min=3)
+     */
+    private $email;
+
     /**
      * @ORM\Column(type="datetime")
      * @Groups("post:read") 
@@ -138,6 +146,18 @@ class Post
     public function setCity(string $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

@@ -21,6 +21,7 @@ class AppFixtures extends Fixture
                 ->setLastName($faker->lastName)
                 ->setJobTitle($faker->jobTitle)
                 ->setCity($faker->city)
+                ->setEmail($faker->email)
                 ->setCreatedAt($faker->dateTimeBetween('-6 months'));
 
             $manager->persist($post);
