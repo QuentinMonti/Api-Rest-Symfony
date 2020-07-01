@@ -60,6 +60,12 @@ class Post
      */
     private $city;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Groups("post:read") 
+     */
+    private $competences;
+
       /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups("post:read")
@@ -146,6 +152,18 @@ class Post
     public function setCity(string $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCompetences(): ?string
+    {
+        return $this->competences;
+    }
+
+    public function setCompetences(string $competences): self
+    {
+        $this->competences = $competences;
 
         return $this;
     }
