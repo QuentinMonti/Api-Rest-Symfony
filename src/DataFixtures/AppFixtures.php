@@ -27,7 +27,8 @@ class AppFixtures extends Fixture
             for ($c = 0; $c < mt_rand(3, 5); $c++) {
                 $comment = new Comment;
                 $comment->setContent($faker->paragraphs(mt_rand(1, 3), true))
-                    ->setUsername($faker->userName)
+                    ->setFirstName($faker->firstName)
+                    ->setLastName($faker->lastName)
                     ->setPost($post);
 
                 $manager->persist($comment);
