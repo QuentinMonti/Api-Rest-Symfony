@@ -63,7 +63,7 @@ class Post
     private $city;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="array", nullable=true)
      * @Groups("post:read") 
      */
     private $competences;
@@ -164,12 +164,12 @@ class Post
         return $this;
     }
 
-    public function getCompetences(): ?string
+    public function getCompetences(): ?array
     {
         return $this->competences;
     }
 
-    public function setCompetences(string $competences): self
+    public function setCompetences(array $competences): self
     {
         $this->competences = $competences;
 
