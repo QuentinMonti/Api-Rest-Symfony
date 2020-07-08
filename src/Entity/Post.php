@@ -28,6 +28,24 @@ class Post
      * @ORM\Column(type="integer", nullable=true)
      * @Groups("post:read")  
      */
+    private $meetingType;
+    
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     * @Groups("post:read")  
+     */
+    private $mentoringType;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     * @Groups("post:read")  
+     */
+    private $experience;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     * @Groups("post:read")  
+     */
     private $note;
     
     /**
@@ -112,6 +130,42 @@ class Post
     public function setNote(int $note): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    public function getMeetingType(): ?int
+    {
+        return $this->meetingType;
+    }
+
+    public function setMeetingType(int $meetingType): self
+    {
+        $this->meetingType = $meetingType;
+
+        return $this;
+    }
+
+    public function getMentoringType(): ?int
+    {
+        return $this->mentoringType;
+    }
+
+    public function setMentoringType(int $mentoringType): self
+    {
+        $this->mentoringType = $mentoringType;
+
+        return $this;
+    }
+
+    public function getExperience(): ?int
+    {
+        return $this->experience;
+    }
+
+    public function setExperience(int $experience): self
+    {
+        $this->experience = $experience;
 
         return $this;
     }

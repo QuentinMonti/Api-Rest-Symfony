@@ -17,6 +17,9 @@ class AppFixtures extends Fixture
         for ($p = 0; $p < 50; $p++) {
             $post = new Post;
             $post->setNote($faker->numberBetween(1,5))
+                ->setExperience($faker->numberBetween(1,4))
+                ->setMentoringType($faker->numberBetween(1,3))
+                ->setMeetingType($faker->numberBetween(1,3))
                 ->setFirstName($faker->firstName)
                 ->setLastName($faker->lastName)
                 ->setJobTitle($faker->jobTitle)
